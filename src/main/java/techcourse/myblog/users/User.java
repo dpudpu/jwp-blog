@@ -1,13 +1,15 @@
 package techcourse.myblog.users;
 
 import lombok.*;
+import techcourse.myblog.articles.Article;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 
 @Entity
 @Getter
-@ToString
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Table(uniqueConstraints = @UniqueConstraint(name = "email", columnNames = {"email"}))
@@ -33,6 +35,9 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "author")
+    private List<Article> articles = new ArrayList<>();
 
     static String authenticate(final String password) {
         return password;
@@ -64,6 +69,11 @@ public class User {
 
     void update(final User other) {
         this.name = other.name;
+    }
+
+    public void addArticle(final Article newArticle) {
+        articles.add(newArticle);
+        newArticle.setAuthor(this);
     }
 }
 
