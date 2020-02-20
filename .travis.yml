@@ -32,18 +32,6 @@ deploy:
     on:
       branch: step4
 
-  - provider: codedeploy
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key: $AWS_SECRET_KEY
-    bucket: jwp-blog
-    key: jwp-blog.zip
-    bundle_type: zip
-    application: jwp-blog
-    deployment_group: jwp-blog-group
-    region: ap-northeast-2
-    wait-until-deployed: true
-    on:
-      branch: step4
 
 # CI 실행 완료 시 메일로 알람
 notifications:
