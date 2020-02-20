@@ -29,6 +29,8 @@ deploy:
     acl: private
     local_dir: deploy
     wait-until-deployed: true
+    on:
+      branch: step4
 
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY
