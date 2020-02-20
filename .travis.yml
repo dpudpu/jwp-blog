@@ -42,6 +42,8 @@ deploy:
     deployment_group: jwp-blog-group
     region: ap-northeast-2
     wait-until-deployed: true
+    on:
+      branch: step4
 
 # CI 실행 완료 시 메일로 알람
 notifications:
